@@ -1,0 +1,97 @@
+.resume-builder-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .resume-builder-wrapper {
+    flex-direction: row;
+  }
+}
+
+.resume-form-section,
+.resume-preview-section {
+  flex: 1;
+  background: #f7f9fc;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.resume-form input,
+.resume-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.resume-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.resume-form button,
+.add-btn {
+  padding: 0.6rem 1rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.add-btn {
+  background-color: #10b981;
+  margin-left: 0;
+}
+
+.upload-photo-label {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.8rem;
+  background-color: #6366f1;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.resume-preview {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  font-family: 'Segoe UI', sans-serif;
+  border: 1px solid #ddd;
+}
+
+.resume-preview h2 {
+  margin-bottom: 0.2rem;
+  color: #333;
+}
+
+.resume-preview h3 {
+  margin-top: 1rem;
+  color: #444;
+  font-size: 1.1rem;
+}
+
+.resume-preview p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0.4rem 0;
+}
+
+.photo-preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}

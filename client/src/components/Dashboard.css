@@ -1,0 +1,249 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f6fc;
+}
+
+.dashboard {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #e6f0ff, #f7faff);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px;
+  color: #fff;
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.top-nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.top-nav a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.header-content {
+  text-align: center;
+  margin-top: 120px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.header-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.header-content p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Wave Background */
+.wave-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 320px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.waves {
+  width: 100%;
+  height: 100%;
+}
+
+/* Tool Grid */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1100px;
+  margin: 60px auto 60px;
+  padding: 0 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.tool-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tool-card img {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+}
+
+.tool-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.tool-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* 🎨 Individual Tool Colors */
+.tool-card.image-to-pdf {
+  background: linear-gradient(135deg, #f77062, #fe5196);
+  color: white;
+}
+
+.tool-card.pdf-editor {
+  background: #6f90f7;
+  color: white;
+}
+
+.tool-card.pdf-to-doc {
+  background: linear-gradient(135deg, #778bff, #93b6ff);
+  color: white;
+}
+
+.tool-card.pdf-compressor {
+  background: linear-gradient(135deg, #00c6ff, #052144);
+  color: white;
+}
+
+.tool-card.resume-builder {
+  background: linear-gradient(135deg, #20723b, #077964);
+  color: white;
+}
+
+.tool-card.doc-to-pdf {
+  background: linear-gradient(135deg, #a87b43, #c4a107);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .tool-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tool-grid {
+    grid-template-columns: 1fr;
+    margin-top: 420px;
+  }
+
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+/* NavBar styles */
+
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Hamburger menu */
+.hamburger {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  display: none;
+}
+
+/* Desktop Nav Links */
+.nav-links a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.desktop-only {
+  display: flex;
+}
+
+/* Mobile Sidebar */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -230px;
+  width: 200px;
+  height: 100%;
+  background-color: #4f46e5;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.mobile-sidebar a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.mobile-sidebar.open {
+  left: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: white;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+}

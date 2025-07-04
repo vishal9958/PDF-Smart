@@ -1,0 +1,57 @@
+.doc-pdf-wrapper {
+  padding: 2rem;
+  text-align: center;
+  background: #eef2f9;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.upload-box {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.file-label {
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.file-label:hover {
+  background-color: #0056b3;
+}
+
+.file-name {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+button {
+  padding: 0.6rem 1.5rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.back-btn {
+  background-color: #6c757d;
+}
+
+.back-btn:hover {
+  background-color: #495057;
+}

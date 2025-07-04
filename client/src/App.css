@@ -1,0 +1,29 @@
+body,*{
+   font-family: 'Segoe UI Emoji', 'Noto Color Emoji', 'Segoe UI Symbol', sans-serif;
+}
+.container {
+  text-align: center;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="file"] {
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #aaa;
+}
+
+.result {
+  margin-top: 20px;
+}

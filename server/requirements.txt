@@ -4,3 +4,4 @@ PyPDF2
 img2pdf
 pdf2docx
 reportlab
+gunicorn

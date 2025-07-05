@@ -21,7 +21,7 @@ function PDFCompressor() {
     formData.append("file", file);
 
     try {
-      const res = await axios.post("https://pdf-backend.onrender.com/api/pdf-compressor", formData, {
+      const res = await axios.post("https://pdf-smart.onrender.com/api/pdf-compressor", formData, {
         responseType: "blob",
       });
 

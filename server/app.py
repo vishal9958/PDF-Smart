@@ -10,6 +10,11 @@ from reportlab.lib.pagesizes import letter
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def home():
+    return "✅ PDF Smart Backend is Running Successfully!"
+
+
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 

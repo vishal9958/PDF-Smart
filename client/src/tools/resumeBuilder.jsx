@@ -37,7 +37,7 @@ function ResumeBuilder() {
   const handleDownload = async () => {
     try {
       const res = await axios.post(
-        "https://pdf-backend.onrender.com/api/download-resume",
+        "https://pdf-backend-gzkk.onrender.com/api/download-resume",
         {
           name: formData.fullName,
           email: formData.email,

@@ -23,7 +23,7 @@ function ImageToPDF() {
     images.forEach((img) => formData.append("images", img));
 
     try {
-      const response = await axios.post("https://pdf-backend.onrender.com/convert", formData, {
+      const response = await axios.post("https://pdf-backend-gzkk.onrender.com/convert", formData, {
         responseType: "blob",
       });
 

@@ -45,7 +45,7 @@ function PDFEditor() {
     if (!pdfFile) return alert("Please choose a PDF");
     const form = new FormData();
     form.append("file", pdfFile);
-    const res = await axios.post("https://pdf-backend.onrender.com/api/rotate", form, { responseType: "blob" });
+    const res = await axios.post("https://pdf-backend-gzkk.onrender.com/api/rotate", form, { responseType: "blob" });
     downloadBlob(new Blob([res.data], { type: "application/pdf" }), "rotated.pdf");
   };
 
@@ -54,7 +54,7 @@ function PDFEditor() {
     if (mergeFiles.length < 2) return alert("Select at least 2 PDFs to merge");
     const form = new FormData();
     mergeFiles.forEach((f) => form.append("files", f));
-    const res = await axios.post("https://pdf-backend.onrender.com/api/merge", form, { responseType: "blob" });
+    const res = await axios.post("https://pdf-backend-gzkk.onrender.com/api/merge", form, { responseType: "blob" });
     downloadBlob(new Blob([res.data], { type: "application/pdf" }), "merged.pdf");
   };
 
@@ -68,7 +68,7 @@ function PDFEditor() {
     form.append("file", pdfFile);
     form.append("start", start);
     form.append("end", end);
-    const res = await axios.post("https://pdf-backend.onrender.com/api/split", form, { responseType: "blob" });
+    const res = await axios.post("https://pdf-backend-gzkk.onrender.com/api/split", form, { responseType: "blob" });
     downloadBlob(new Blob([res.data], { type: "application/pdf" }), "split.pdf");
   };
 
@@ -81,7 +81,7 @@ function PDFEditor() {
     const form = new FormData();
     form.append("file", pdfFile);
     form.append("text", text);
-    const res = await axios.post("https://pdf-backend.onrender.com/api/watermark", form, { responseType: "blob" });
+    const res = await axios.post("https://pdf-backend-gzkk.onrender.com/api/watermark", form, { responseType: "blob" });
     downloadBlob(new Blob([res.data], { type: "application/pdf" }), "watermarked.pdf");
   };
 

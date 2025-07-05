@@ -23,7 +23,7 @@ function PDFtoDOC() {
 
     try {
       setLoading(true);
-      const res = await axios.post("https://pdf-backend.onrender.com/api/pdf-to-doc", formData, {
+      const res = await axios.post("https://pdf-backend-gzkk.onrender.com/api/pdf-to-doc", formData, {
         responseType: "blob",
       });
 

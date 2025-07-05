@@ -6,6 +6,7 @@ from PyPDF2 import PdfReader, PdfWriter
 from pdf2docx import Converter
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
+import requests
 
 app = Flask(__name__)
 CORS(app)
@@ -262,25 +263,32 @@ def download_resume():
 @app.route("/api/doc-to-pdf", methods=["POST"])
 def doc_to_pdf():
     try:
-        doc_file = request.files["file"]
-        input_path = os.path.join(UPLOAD_FOLDER, doc_file.filename)
-        output_path = os.path.splitext(input_path)[0] + ".pdf"
+        file = request.files["file"]
+        input_path = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(input_path)
 
-        doc_file.save(input_path)
+        # Upload to CloudConvert
+        api_key = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjExYzYwMmYzNzk2NzNlMzA4MmY4NzdjNDUyMzhmODljZGJlM2VjMmMwNjY4MTliYzQ4ZTFhMzEzNjYwODE2ZWUwNDFlMDBlMjMxNjQzYzIiLCJpYXQiOjE3NTE3NDQ4OTIuMzIzNjY4LCJuYmYiOjE3NTE3NDQ4OTIuMzIzNjY5LCJleHAiOjQ5MDc0MTg0OTIuMzE3ODE0LCJzdWIiOiI3MjM2Nzc4NiIsInNjb3BlcyI6WyJ1c2VyLnJlYWQiLCJ1c2VyLndyaXRlIiwidGFzay5yZWFkIiwidGFzay53cml0ZSIsIndlYmhvb2sucmVhZCIsIndlYmhvb2sud3JpdGUiLCJwcmVzZXQucmVhZCIsInByZXNldC53cml0ZSJdfQ.YCUnGkC-nZ2OetZIUCnMbIbAvCjuMEJl5Ec-Cy5798u4aZ-LrpnMkCJTZt8jb6ahpB_EP1Wm3kGYkn456Y_z9hOavu9LQpcWs7ptEEAZtX9A79wVX_ValcaSq4p4CEDRNP2Z1ru1pZyXnYU8ZIy4pXWSaG57cqkCZP3n-T4vxpeRnM1JkFMAv5HdcPzRTfp8qfCFrqDuIFU0uiqL2XsLA3ALOYBGChqV6LSpIzotEn1pX2Kc8Sg6SMpqQd8yM1YZ35x5CuAYhwusy5pF2xAttC6Xu1bwa6XwxbhEy_vPhFElkkzez1DMBHwPfgs3iNQVho8OX-WOjrIYEB7JW5iZOJ3zZlVT-b2QQypmF4ipR3es6su8JB-742elOTLBgzdmL7mn7IxXOxkmRQvaoC15gi_1oGIu6xbK3Rd2EjGsrMpOWphT843TvSwYJnCXJqu3TOCm_a_LYehuX1L_WpdanXBQHtgcE9gOu98ROQCRcF0sskdvxbrL-vfeJLSOEVLaWN_nMrO45TZhHbwBk53nTKrQg_W23TpdQoTLR89Cv5sSw45nqRCUkg4a76R4mXnPaR-iQkaqsTxix1UL-EnFvcV26cmV1fe7DMsi6oqU2q7Hr2aWf30q_WV-0_hE_t7JPReHnacMaft97CdDeo97jb5W_DbFovsDeHeyCIMYiqM"  # 👈 Replace with your CloudConvert API key
+        convert_url = "https://api.cloudconvert.com/v2/convert"
 
-        # Use libreoffice to convert DOCX to PDF
-        os.system(f'soffice --headless --convert-to pdf "{input_path}" --outdir "{UPLOAD_FOLDER}"')
+        files = {'file': open(input_path, 'rb')}
+        data = {
+            "apikey": api_key,
+            "inputformat": "docx",
+            "outputformat": "pdf",
+        }
 
-        if not os.path.exists(output_path):
-            return "Conversion failed", 500
+        response = requests.post("https://api.cloudconvert.com/v2/convert", data=data, files=files)
+        result = response.json()
 
-        return send_file(output_path, as_attachment=True)
+        # ⚠️ You'll need to handle download link here (or use their official SDK)
+
+        return "Converted (mock)", 200  # Placeholder
 
     except Exception as e:
         print("🔥 Error in /api/doc-to-pdf:", str(e))
         return "DOC to PDF conversion failed", 500
-
-
+    
 # ✅ Start the server
 if __name__ == "__main__":
     app.run(debug=True)
